@@ -1,5 +1,11 @@
 FROM dunglas/frankenphp:latest-php8.3
 
+# Metadata
+LABEL org.opencontainers.image.title = "FrankenPHP Docker"
+LABEL org.opencontainers.image.description = "FrankenPHP Docker image"
+LABEL org.opencontainers.image.url = "https://github.com/fsteltenkamp/frankenphp-docker"
+LABEL org.opencontainers.image.source = "https://github.com/fsteltenkamp/frankenphp-docker"
+
 # add additional extensions here:
 RUN install-php-extensions \
 	pdo_mysql
