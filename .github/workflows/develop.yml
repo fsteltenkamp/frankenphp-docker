@@ -1,0 +1,24 @@
+name: Docker Build CI
+
+on:
+  push:
+    branches: [ "develop" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    # Login to GHCR
+    - name: Log in to the GHCR
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Build the Docker image
+      run: docker build . --file baseimage --tag ghcr.io/fsteltenkamp/frankenphp-docker:develop
+
+    - name: Push the Docker image
+      run: docker push ghcr.io/fsteltenkamp/frankenphp-docker:develop
