@@ -2,6 +2,7 @@ name: Docker Build CI
 
 env:
   PHP_VERSION: 8.3
+  LATEST: true
 
 on:
   push:
@@ -18,12 +19,24 @@ jobs:
     - name: Log in to the GHCR
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Build the Docker image
+    - name: Build the Base Docker image
       run: |
-        docker build . --file baseimage --tag ghcr.io/fsteltenkamp/frankenphp-docker:latest --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}
+        if [ "${{ env.LATEST }}" = "true" ]; then
+          docker build . --file baseimage --tag ghcr.io/fsteltenkamp/frankenphp-docker:latest --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}
+        else
+          docker build . --file baseimage --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}
+        fi
 
-    - name: Push the Docker image
-      run: docker push ghcr.io/fsteltenkamp/frankenphp-docker:latest
+    - name: Push the Base Docker image
+      run: docker push ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}
     
-    - name: Build the Docker image
-      run: docker build . --file with_nodejs --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}-nodejs
+    - name: Build the Nodejs Docker image
+      run: |
+        if [ "${{ env.LATEST }}" = "true" ]; then
+          docker build . --file with_nodejs --tag ghcr.io/fsteltenkamp/frankenphp-docker:latest-nodejs --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}-nodejs
+        else
+          docker build . --file with_nodejs --tag ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}-nodejs
+        fi
+    
+    - name: Push the Nodejs Docker image
+      run: docker push ghcr.io/fsteltenkamp/frankenphp-docker:php${{ env.PHP_VERSION }}-nodejs
