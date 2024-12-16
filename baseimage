@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.url = "https://github.com/fsteltenkamp/frankenphp
 LABEL org.opencontainers.image.source = "https://github.com/fsteltenkamp/frankenphp-docker"
 
 # Install additional packages
-RUN /bin/sh -c apt-get install -y git
+RUN apt-get install -y git
 
 # add additional extensions here:
 RUN install-php-extensions \
