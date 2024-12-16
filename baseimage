@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp
+FROM dunglas/frankenphp:php8.3
 
 # Metadata
 LABEL org.opencontainers.image.title = "FrankenPHP Docker"
