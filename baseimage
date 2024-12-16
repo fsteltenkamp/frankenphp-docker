@@ -8,6 +8,9 @@ LABEL org.opencontainers.image.source = "https://github.com/fsteltenkamp/franken
 
 # add additional extensions here:
 RUN install-php-extensions \
-	pdo_mysql
+	pdo_mysql \
+	gd \
+	intl \
+	zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
