@@ -25,5 +25,12 @@ RUN install-php-extensions \
 	intl \
 	zip
 
+# Add Bashrc
+COPY .bashrc /root/.bashrc
+COPY .bashrc /var/www/.bashrc
+
+# Set permissions
+RUN chown -R 33:33 /var/www
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
