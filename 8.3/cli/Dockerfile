@@ -17,11 +17,11 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-# Install Nodejs
+# install Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
 	apt-get install -y nodejs
 
-# add additional extensions:
+# add additional extensions here:
 RUN install-php-extensions \
 	pdo_mysql \
 	gd \
