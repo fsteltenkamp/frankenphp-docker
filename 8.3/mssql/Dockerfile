@@ -1,5 +1,7 @@
 FROM dunglas/frankenphp:php8.3
 
+ENV ACCEPT_EULA=Y
+
 # Metadata
 LABEL org.opencontainers.image.title = "FrankenPHP Docker"
 LABEL org.opencontainers.image.description = "FrankenPHP Docker image"
