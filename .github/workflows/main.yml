@@ -22,6 +22,6 @@ jobs:
     - name: Log in to the GHCR
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Build the image
-      run: docker build . --file with_nodejs --tag ghcr.io/fsteltenkamp/frankenphp-docker:php8.3-mssql
+      run: docker build . --file 8.3/mssql/Dockerfile --tag ghcr.io/fsteltenkamp/frankenphp-docker:php8.3-mssql
     - name: Push the Nodejs Docker image
       run: docker push ghcr.io/fsteltenkamp/frankenphp-docker:php8.3-mssql
