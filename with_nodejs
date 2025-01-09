@@ -10,6 +10,9 @@ LABEL org.opencontainers.image.source = "https://github.com/fsteltenkamp/franken
 RUN apt-get update && \
 	apt-get -y --no-install-recommends install \
 		git \
+		zip \
+		unzip \
+		libnss3-tools \
 	&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
