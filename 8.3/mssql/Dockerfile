@@ -13,6 +13,7 @@ RUN apt-get update && \
 		zip \
 		unzip \
 		libnss3-tools \
+		gnupg \
 	&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
