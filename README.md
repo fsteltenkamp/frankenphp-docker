@@ -13,5 +13,7 @@ I Added the following Software to all images:
 The following tags provide different additional addons and software.
 - `<version>-mssql`: 
     - MsSQL Driver
+- `<version>-mssql-mysqli`:
+    - MsSQL Driver and myqsli instead of pdo_mysql
 - `<version>-mysqli`:
     - Mysqli Driver instead of the default pdo_mysql
