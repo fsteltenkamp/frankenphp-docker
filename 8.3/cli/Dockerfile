@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:php8.3
+FROM docker.io/dunglas/frankenphp:php8.3
 
 # Metadata
 LABEL org.opencontainers.image.title = "FrankenPHP Docker"
@@ -37,4 +37,4 @@ COPY .bashrc /var/www/.bashrc
 RUN chown -R 33:33 /var/www
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=docker.io/composer:latest /usr/bin/composer /usr/local/bin/composer
