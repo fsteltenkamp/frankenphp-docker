@@ -23,7 +23,7 @@ RUN curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
 
 # add additional extensions here:
 RUN install-php-extensions \
-	pdo_mysql \
+	mysqli \
 	gd \
 	intl \
 	zip \
